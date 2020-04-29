@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		553E03D62459F1920092F8CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03D52459F1920092F8CF /* AppDelegate.swift */; };
+		553E03D82459F1920092F8CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03D72459F1920092F8CF /* SceneDelegate.swift */; };
+		553E03DA2459F1920092F8CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03D92459F1920092F8CF /* ViewController.swift */; };
+		553E03DD2459F1920092F8CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 553E03DB2459F1920092F8CF /* Main.storyboard */; };
+		553E03DF2459F1970092F8CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553E03DE2459F1970092F8CF /* Assets.xcassets */; };
+		553E03E22459F1970092F8CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 553E03E02459F1970092F8CF /* LaunchScreen.storyboard */; };
+		553E03ED2459F1970092F8CF /* Sylheti_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03EC2459F1970092F8CF /* Sylheti_appTests.swift */; };
+		553E03F82459F1970092F8CF /* Sylheti_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03F72459F1970092F8CF /* Sylheti_appUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		553E03E92459F1970092F8CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 553E03CA2459F1920092F8CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553E03D12459F1920092F8CF;
+			remoteInfo = "Sylheti app";
+		};
+		553E03F42459F1970092F8CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 553E03CA2459F1920092F8CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553E03D12459F1920092F8CF;
+			remoteInfo = "Sylheti app";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		553E03D22459F1920092F8CF /* Sylheti app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sylheti app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		553E03D52459F1920092F8CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		553E03D72459F1920092F8CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		553E03D92459F1920092F8CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		553E03DC2459F1920092F8CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		553E03DE2459F1970092F8CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		553E03E12459F1970092F8CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		553E03E32459F1970092F8CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		553E03E82459F1970092F8CF /* Sylheti appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sylheti appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		553E03EC2459F1970092F8CF /* Sylheti_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sylheti_appTests.swift; sourceTree = "<group>"; };
+		553E03EE2459F1970092F8CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		553E03F32459F1970092F8CF /* Sylheti appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sylheti appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		553E03F72459F1970092F8CF /* Sylheti_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sylheti_appUITests.swift; sourceTree = "<group>"; };
+		553E03F92459F1970092F8CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		553E03CF2459F1920092F8CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553E03E52459F1970092F8CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553E03F02459F1970092F8CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		553E03C92459F1920092F8CF = {
+			isa = PBXGroup;
+			children = (
+				553E03D42459F1920092F8CF /* Sylheti app */,
+				553E03EB2459F1970092F8CF /* Sylheti appTests */,
+				553E03F62459F1970092F8CF /* Sylheti appUITests */,
+				553E03D32459F1920092F8CF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		553E03D32459F1920092F8CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				553E03D22459F1920092F8CF /* Sylheti app.app */,
+				553E03E82459F1970092F8CF /* Sylheti appTests.xctest */,
+				553E03F32459F1970092F8CF /* Sylheti appUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		553E03D42459F1920092F8CF /* Sylheti app */ = {
+			isa = PBXGroup;
+			children = (
+				553E03D52459F1920092F8CF /* AppDelegate.swift */,
+				553E03D72459F1920092F8CF /* SceneDelegate.swift */,
+				553E03D92459F1920092F8CF /* ViewController.swift */,
+				553E03DB2459F1920092F8CF /* Main.storyboard */,
+				553E03DE2459F1970092F8CF /* Assets.xcassets */,
+				553E03E02459F1970092F8CF /* LaunchScreen.storyboard */,
+				553E03E32459F1970092F8CF /* Info.plist */,
+			);
+			path = "Sylheti app";
+			sourceTree = "<group>";
+		};
+		553E03EB2459F1970092F8CF /* Sylheti appTests */ = {
+			isa = PBXGroup;
+			children = (
+				553E03EC2459F1970092F8CF /* Sylheti_appTests.swift */,
+				553E03EE2459F1970092F8CF /* Info.plist */,
+			);
+			path = "Sylheti appTests";
+			sourceTree = "<group>";
+		};
+		553E03F62459F1970092F8CF /* Sylheti appUITests */ = {
+			isa = PBXGroup;
+			children = (
+				553E03F72459F1970092F8CF /* Sylheti_appUITests.swift */,
+				553E03F92459F1970092F8CF /* Info.plist */,
+			);
+			path = "Sylheti appUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		553E03D12459F1920092F8CF /* Sylheti app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 553E03FC2459F1970092F8CF /* Build configuration list for PBXNativeTarget "Sylheti app" */;
+			buildPhases = (
+				553E03CE2459F1920092F8CF /* Sources */,
+				553E03CF2459F1920092F8CF /* Frameworks */,
+				553E03D02459F1920092F8CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Sylheti app";
+			productName = "Sylheti app";
+			productReference = 553E03D22459F1920092F8CF /* Sylheti app.app */;
+			productType = "com.apple.product-type.application";
+		};
+		553E03E72459F1970092F8CF /* Sylheti appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 553E03FF2459F1970092F8CF /* Build configuration list for PBXNativeTarget "Sylheti appTests" */;
+			buildPhases = (
+				553E03E42459F1970092F8CF /* Sources */,
+				553E03E52459F1970092F8CF /* Frameworks */,
+				553E03E62459F1970092F8CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				553E03EA2459F1970092F8CF /* PBXTargetDependency */,
+			);
+			name = "Sylheti appTests";
+			productName = "Sylheti appTests";
+			productReference = 553E03E82459F1970092F8CF /* Sylheti appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		553E03F22459F1970092F8CF /* Sylheti appUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 553E04022459F1970092F8CF /* Build configuration list for PBXNativeTarget "Sylheti appUITests" */;
+			buildPhases = (
+				553E03EF2459F1970092F8CF /* Sources */,
+				553E03F02459F1970092F8CF /* Frameworks */,
+				553E03F12459F1970092F8CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				553E03F52459F1970092F8CF /* PBXTargetDependency */,
+			);
+			name = "Sylheti appUITests";
+			productName = "Sylheti appUITests";
+			productReference = 553E03F32459F1970092F8CF /* Sylheti appUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		553E03CA2459F1920092F8CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Anaïs";
+				TargetAttributes = {
+					553E03D12459F1920092F8CF = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					553E03E72459F1970092F8CF = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 553E03D12459F1920092F8CF;
+					};
+					553E03F22459F1970092F8CF = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 553E03D12459F1920092F8CF;
+					};
+				};
+			};
+			buildConfigurationList = 553E03CD2459F1920092F8CF /* Build configuration list for PBXProject "Sylheti app" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 553E03C92459F1920092F8CF;
+			productRefGroup = 553E03D32459F1920092F8CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				553E03D12459F1920092F8CF /* Sylheti app */,
+				553E03E72459F1970092F8CF /* Sylheti appTests */,
+				553E03F22459F1970092F8CF /* Sylheti appUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		553E03D02459F1920092F8CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				553E03E22459F1970092F8CF /* LaunchScreen.storyboard in Resources */,
+				553E03DF2459F1970092F8CF /* Assets.xcassets in Resources */,
+				553E03DD2459F1920092F8CF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553E03E62459F1970092F8CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553E03F12459F1970092F8CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		553E03CE2459F1920092F8CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				553E03DA2459F1920092F8CF /* ViewController.swift in Sources */,
+				553E03D62459F1920092F8CF /* AppDelegate.swift in Sources */,
+				553E03D82459F1920092F8CF /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553E03E42459F1970092F8CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				553E03ED2459F1970092F8CF /* Sylheti_appTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553E03EF2459F1970092F8CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				553E03F82459F1970092F8CF /* Sylheti_appUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		553E03EA2459F1970092F8CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553E03D12459F1920092F8CF /* Sylheti app */;
+			targetProxy = 553E03E92459F1970092F8CF /* PBXContainerItemProxy */;
+		};
+		553E03F52459F1970092F8CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553E03D12459F1920092F8CF /* Sylheti app */;
+			targetProxy = 553E03F42459F1970092F8CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		553E03DB2459F1920092F8CF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				553E03DC2459F1920092F8CF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		553E03E02459F1970092F8CF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				553E03E12459F1970092F8CF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		553E03FA2459F1970092F8CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		553E03FB2459F1970092F8CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		553E03FD2459F1970092F8CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SCGAN6HZRF;
+				INFOPLIST_FILE = "Sylheti app/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ana.Sylheti-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		553E03FE2459F1970092F8CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SCGAN6HZRF;
+				INFOPLIST_FILE = "Sylheti app/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ana.Sylheti-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		553E04002459F1970092F8CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SCGAN6HZRF;
+				INFOPLIST_FILE = "Sylheti appTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ana.Sylheti-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sylheti app.app/Sylheti app";
+			};
+			name = Debug;
+		};
+		553E04012459F1970092F8CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SCGAN6HZRF;
+				INFOPLIST_FILE = "Sylheti appTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ana.Sylheti-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sylheti app.app/Sylheti app";
+			};
+			name = Release;
+		};
+		553E04032459F1970092F8CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SCGAN6HZRF;
+				INFOPLIST_FILE = "Sylheti appUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ana.Sylheti-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Sylheti app";
+			};
+			name = Debug;
+		};
+		553E04042459F1970092F8CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SCGAN6HZRF;
+				INFOPLIST_FILE = "Sylheti appUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ana.Sylheti-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Sylheti app";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		553E03CD2459F1920092F8CF /* Build configuration list for PBXProject "Sylheti app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				553E03FA2459F1970092F8CF /* Debug */,
+				553E03FB2459F1970092F8CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		553E03FC2459F1970092F8CF /* Build configuration list for PBXNativeTarget "Sylheti app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				553E03FD2459F1970092F8CF /* Debug */,
+				553E03FE2459F1970092F8CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		553E03FF2459F1970092F8CF /* Build configuration list for PBXNativeTarget "Sylheti appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				553E04002459F1970092F8CF /* Debug */,
+				553E04012459F1970092F8CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		553E04022459F1970092F8CF /* Build configuration list for PBXNativeTarget "Sylheti appUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				553E04032459F1970092F8CF /* Debug */,
+				553E04042459F1970092F8CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 553E03CA2459F1920092F8CF /* Project object */;
+}
