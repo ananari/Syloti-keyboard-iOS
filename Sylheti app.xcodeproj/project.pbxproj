@@ -15,6 +15,8 @@
 		553E03E22459F1970092F8CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 553E03E02459F1970092F8CF /* LaunchScreen.storyboard */; };
 		553E03ED2459F1970092F8CF /* Sylheti_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03EC2459F1970092F8CF /* Sylheti_appTests.swift */; };
 		553E03F82459F1970092F8CF /* Sylheti_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03F72459F1970092F8CF /* Sylheti_appUITests.swift */; };
+		553E040C2459F1E40092F8CF /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E040B2459F1E40092F8CF /* KeyboardViewController.swift */; };
+		553E04102459F1E40092F8CF /* Sylheti keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 553E04092459F1E40092F8CF /* Sylheti keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +34,28 @@
 			remoteGlobalIDString = 553E03D12459F1920092F8CF;
 			remoteInfo = "Sylheti app";
 		};
+		553E040E2459F1E40092F8CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 553E03CA2459F1920092F8CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553E04082459F1E40092F8CF;
+			remoteInfo = "Sylheti keyboard";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		553E04142459F1E40092F8CF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				553E04102459F1E40092F8CF /* Sylheti keyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		553E03D22459F1920092F8CF /* Sylheti app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sylheti app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +72,9 @@
 		553E03F32459F1970092F8CF /* Sylheti appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sylheti appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		553E03F72459F1970092F8CF /* Sylheti_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sylheti_appUITests.swift; sourceTree = "<group>"; };
 		553E03F92459F1970092F8CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		553E04092459F1E40092F8CF /* Sylheti keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Sylheti keyboard.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		553E040B2459F1E40092F8CF /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		553E040D2459F1E40092F8CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +99,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		553E04062459F1E40092F8CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -82,6 +115,7 @@
 				553E03D42459F1920092F8CF /* Sylheti app */,
 				553E03EB2459F1970092F8CF /* Sylheti appTests */,
 				553E03F62459F1970092F8CF /* Sylheti appUITests */,
+				553E040A2459F1E40092F8CF /* Sylheti keyboard */,
 				553E03D32459F1920092F8CF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +126,7 @@
 				553E03D22459F1920092F8CF /* Sylheti app.app */,
 				553E03E82459F1970092F8CF /* Sylheti appTests.xctest */,
 				553E03F32459F1970092F8CF /* Sylheti appUITests.xctest */,
+				553E04092459F1E40092F8CF /* Sylheti keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +163,15 @@
 			path = "Sylheti appUITests";
 			sourceTree = "<group>";
 		};
+		553E040A2459F1E40092F8CF /* Sylheti keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				553E040B2459F1E40092F8CF /* KeyboardViewController.swift */,
+				553E040D2459F1E40092F8CF /* Info.plist */,
+			);
+			path = "Sylheti keyboard";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,10 +182,12 @@
 				553E03CE2459F1920092F8CF /* Sources */,
 				553E03CF2459F1920092F8CF /* Frameworks */,
 				553E03D02459F1920092F8CF /* Resources */,
+				553E04142459F1E40092F8CF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				553E040F2459F1E40092F8CF /* PBXTargetDependency */,
 			);
 			name = "Sylheti app";
 			productName = "Sylheti app";
@@ -184,6 +230,23 @@
 			productReference = 553E03F32459F1970092F8CF /* Sylheti appUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		553E04082459F1E40092F8CF /* Sylheti keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 553E04112459F1E40092F8CF /* Build configuration list for PBXNativeTarget "Sylheti keyboard" */;
+			buildPhases = (
+				553E04052459F1E40092F8CF /* Sources */,
+				553E04062459F1E40092F8CF /* Frameworks */,
+				553E04072459F1E40092F8CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Sylheti keyboard";
+			productName = "Sylheti keyboard";
+			productReference = 553E04092459F1E40092F8CF /* Sylheti keyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -205,6 +268,9 @@
 						CreatedOnToolsVersion = 11.4.1;
 						TestTargetID = 553E03D12459F1920092F8CF;
 					};
+					553E04082459F1E40092F8CF = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 				};
 			};
 			buildConfigurationList = 553E03CD2459F1920092F8CF /* Build configuration list for PBXProject "Sylheti app" */;
@@ -223,6 +289,7 @@
 				553E03D12459F1920092F8CF /* Sylheti app */,
 				553E03E72459F1970092F8CF /* Sylheti appTests */,
 				553E03F22459F1970092F8CF /* Sylheti appUITests */,
+				553E04082459F1E40092F8CF /* Sylheti keyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -246,6 +313,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		553E03F12459F1970092F8CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553E04072459F1E40092F8CF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -281,6 +355,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		553E04052459F1E40092F8CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				553E040C2459F1E40092F8CF /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -293,6 +375,11 @@
 			isa = PBXTargetDependency;
 			target = 553E03D12459F1920092F8CF /* Sylheti app */;
 			targetProxy = 553E03F42459F1970092F8CF /* PBXContainerItemProxy */;
+		};
+		553E040F2459F1E40092F8CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553E04082459F1E40092F8CF /* Sylheti keyboard */;
+			targetProxy = 553E040E2459F1E40092F8CF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -433,6 +520,7 @@
 		553E03FD2459F1970092F8CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
@@ -451,6 +539,7 @@
 		553E03FE2459F1970092F8CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
@@ -550,6 +639,44 @@
 			};
 			name = Release;
 		};
+		553E04122459F1E40092F8CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SCGAN6HZRF;
+				INFOPLIST_FILE = "Sylheti keyboard/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ana.Sylheti-app.Sylheti-keyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		553E04132459F1E40092F8CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SCGAN6HZRF;
+				INFOPLIST_FILE = "Sylheti keyboard/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ana.Sylheti-app.Sylheti-keyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -585,6 +712,15 @@
 			buildConfigurations = (
 				553E04032459F1970092F8CF /* Debug */,
 				553E04042459F1970092F8CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		553E04112459F1E40092F8CF /* Build configuration list for PBXNativeTarget "Sylheti keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				553E04122459F1E40092F8CF /* Debug */,
+				553E04132459F1E40092F8CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
