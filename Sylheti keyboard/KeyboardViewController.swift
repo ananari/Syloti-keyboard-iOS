@@ -37,8 +37,9 @@ class KeyboardViewController: UIInputViewController {
         let topButtonTitles = ["ꠋ", "ꠒ", "ꠙ", "ꠐ", "ꠌ", "ꠎ", "ꠢ", "ꠉ", "ꠠ"]
         let middleButtonTitles = ["ꠥ", "ꠤ", "ꠛ", "\u{A806}", "ꠣ", "ꠇ", "ꠔ", "ꠖ"]
         
-        let topRow = UIView(frame: CGRect(x:0, y:0, width:320, height:40))
-        let middleRow = UIView(frame: CGRect(x:0, y:40, width:320, height:40))
+        let topRow = UIView(frame: CGRect(x:0, y:10, width:UIScreen.main.bounds.size.width, height:40))
+        let middleRow = UIView(frame: CGRect(x:0, y:60, width:UIScreen.main.bounds.size.width, height:40))
+        
 
         func createButtons(titles: [String]) -> [UIButton] {
                 
@@ -50,6 +51,12 @@ class KeyboardViewController: UIInputViewController {
                 button.translatesAutoresizingMaskIntoConstraints = false;
                 button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
                 button.setTitleColor(.darkGray, for: .normal)
+                button.layer.cornerRadius = 5;
+                button.layer.shadowRadius = 1;
+                button.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
+                button.layer.shadowOpacity = 1;
+                button.layer.shadowRadius = 0;
+                button.layer.shadowOffset = CGSize(width: 0, height: 1)
                 button.addTarget(self, action:#selector(KeyboardViewController.keyPressed(_:)), for: .touchUpInside)
                 buttons.append(button)
             }
@@ -73,7 +80,7 @@ class KeyboardViewController: UIInputViewController {
                     
                 }else{
                     
-                    leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: buttons[index-1], attribute: .right, multiplier: 1.0, constant: 1)
+                    leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: buttons[index-1], attribute: .right, multiplier: 1.0, constant: 5)
                     
                     let widthConstraint = NSLayoutConstraint(item: buttons[0], attribute: .width, relatedBy: .equal, toItem: button, attribute: .width, multiplier: 1.0, constant: 0)
                     
@@ -88,7 +95,7 @@ class KeyboardViewController: UIInputViewController {
                     
                 }else{
                     
-                    rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: buttons[index+1], attribute: .left, multiplier: 1.0, constant: -1)
+                    rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: buttons[index+1], attribute: .left, multiplier: 1.0, constant: -5)
                 }
                 
                 containingView.addConstraints([topConstraint, bottomConstraint, rightConstraint, leftConstraint])
