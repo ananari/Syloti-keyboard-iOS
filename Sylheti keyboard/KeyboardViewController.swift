@@ -18,27 +18,41 @@ class KeyboardViewController: UIInputViewController {
         // Add custom view sizing constraints here
     }
     
+    var isCaps = false;
+    var allButtons = [UIButton]();
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Perform custom UI setup here
         self.nextKeyboardButton = UIButton(type: .system)
         
-        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
+        self.nextKeyboardButton.setTitle(NSLocalizedString("🌐", comment: "Title for 'Next Keyboard' button"), for: [])
         self.nextKeyboardButton.sizeToFit()
         self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        
+        self.nextKeyboardButton.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+        self.nextKeyboardButton.setTitleColor(.darkGray, for: .normal)
+        self.nextKeyboardButton.layer.cornerRadius = 5;
+        self.nextKeyboardButton.layer.shadowRadius = 1;
+        self.nextKeyboardButton.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
+        self.nextKeyboardButton.layer.shadowOpacity = 1;
+        self.nextKeyboardButton.layer.shadowRadius = 0;
+        self.nextKeyboardButton.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.view.addSubview(self.nextKeyboardButton)
         
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         let topButtonTitles = ["ꠋ", "ꠒ", "ꠙ", "ꠐ", "ꠌ", "ꠎ", "ꠢ", "ꠉ", "ꠠ"]
         let middleButtonTitles = ["ꠥ", "ꠤ", "ꠛ", "\u{A806}", "ꠣ", "ꠇ", "ꠔ", "ꠖ"]
+        let bottomButtonTitles = ["ꠂ", "ꠧ", "ꠦ", "ꠞ", "ꠘ", "ꠡ", "ꠝ"]
+        
+        
         
         let topRow = UIView(frame: CGRect(x:0, y:10, width:UIScreen.main.bounds.size.width, height:40))
         let middleRow = UIView(frame: CGRect(x:0, y:60, width:UIScreen.main.bounds.size.width, height:40))
+        let bottomRow = UIView(frame: CGRect(x:0, y:110, width:UIScreen.main.bounds.size.width, height:40))
         
 
         func createButtons(titles: [String]) -> [UIButton] {
@@ -59,6 +73,7 @@ class KeyboardViewController: UIInputViewController {
                 button.layer.shadowOffset = CGSize(width: 0, height: 1)
                 button.addTarget(self, action:#selector(KeyboardViewController.keyPressed(_:)), for: .touchUpInside)
                 buttons.append(button)
+                allButtons.append(button)
             }
                 
             return buttons
@@ -102,8 +117,25 @@ class KeyboardViewController: UIInputViewController {
             }
         }
         
+        let shiftButton = UIButton(type: .system)
+        shiftButton.setTitle("\u{213A}", for: .normal)
+        shiftButton.translatesAutoresizingMaskIntoConstraints = false;
+        shiftButton.backgroundColor = UIColor(white: 1.0, alpha: 1.0);
+        shiftButton.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+        shiftButton.setTitleColor(.darkGray, for: .normal)
+        shiftButton.layer.cornerRadius = 5;
+        shiftButton.layer.shadowRadius = 1;
+        shiftButton.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
+        shiftButton.layer.shadowOpacity = 1;
+        shiftButton.layer.shadowRadius = 0;
+        shiftButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        shiftButton.addTarget(self, action:#selector(toggleCaps), for: .touchUpInside)
+        
+        
         let topButtons = createButtons(titles: topButtonTitles)
-        let middleButtons = createButtons(titles: middleButtonTitles)
+        var middleButtons = createButtons(titles: middleButtonTitles)
+        middleButtons.append(shiftButton)
+        let bottomButtons = createButtons(titles: bottomButtonTitles)
         
         for button in topButtons {
             topRow.addSubview(button)
@@ -111,12 +143,17 @@ class KeyboardViewController: UIInputViewController {
         for button in middleButtons {
             middleRow.addSubview(button)
         }
+        for button in bottomButtons {
+            bottomRow.addSubview(button)
+        }
         
         self.view.addSubview(topRow)
         self.view.addSubview(middleRow)
+        self.view.addSubview(bottomRow)
                 
         addConstraints(buttons: topButtons, containingView: topRow)
         addConstraints(buttons: middleButtons, containingView: middleRow)
+        addConstraints(buttons: bottomButtons, containingView: bottomRow)
         
     }
     
@@ -125,6 +162,24 @@ class KeyboardViewController: UIInputViewController {
         let title = button.title(for: .normal)
         (textDocumentProxy as UIKeyInput).insertText(title!)
     }
+    
+    @objc func toggleCaps(_ sender: UIButton?) {
+        let capsDict: [String: String] = [
+            "ꠒ": "ꠓ",
+            "ꠓ": "ꠒ",
+            "ꠙ": "ꠚ",
+            "ꠚ": "ꠙ"
+        ]
+        
+        for button in allButtons {
+            let title = button.title(for: .normal)!
+            if capsDict[title] != nil {
+                button.setTitle(capsDict[title], for: .normal)
+            }
+        }
+        
+    }
+    
     
     override func viewWillLayoutSubviews() {
         self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
