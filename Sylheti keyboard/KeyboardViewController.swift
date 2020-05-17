@@ -32,7 +32,7 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        self.nextKeyboardButton.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+        self.nextKeyboardButton.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         self.nextKeyboardButton.setTitleColor(.darkGray, for: .normal)
         self.nextKeyboardButton.layer.cornerRadius = 5;
         self.nextKeyboardButton.layer.shadowRadius = 1;
@@ -40,10 +40,10 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.layer.shadowOpacity = 1;
         self.nextKeyboardButton.layer.shadowRadius = 0;
         self.nextKeyboardButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.view.addSubview(self.nextKeyboardButton)
+//        self.view.addSubview(self.nextKeyboardButton)
         
-        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+//        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+//        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         let topButtonTitles = ["ꠋ", "ꠒ", "ꠙ", "ꠐ", "ꠌ", "ꠎ", "ꠢ", "ꠉ", "ꠠ"]
         let middleButtonTitles = ["ꠥ", "ꠤ", "ꠛ", "\u{A806}", "ꠣ", "ꠇ", "ꠔ", "ꠖ"]
         let bottomButtonTitles = ["ꠂ", "ꠧ", "ꠦ", "ꠞ", "ꠘ", "ꠡ", "ꠝ"]
@@ -120,8 +120,7 @@ class KeyboardViewController: UIInputViewController {
         let shiftButton = UIButton(type: .system)
         shiftButton.setTitle("\u{213A}", for: .normal)
         shiftButton.translatesAutoresizingMaskIntoConstraints = false;
-        shiftButton.backgroundColor = UIColor(white: 1.0, alpha: 1.0);
-        shiftButton.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+        shiftButton.backgroundColor = UIColor(white: 0.9, alpha: 1.0);
         shiftButton.setTitleColor(.darkGray, for: .normal)
         shiftButton.layer.cornerRadius = 5;
         shiftButton.layer.shadowRadius = 1;
@@ -134,8 +133,9 @@ class KeyboardViewController: UIInputViewController {
         
         let topButtons = createButtons(titles: topButtonTitles)
         var middleButtons = createButtons(titles: middleButtonTitles)
-        middleButtons.append(shiftButton)
-        let bottomButtons = createButtons(titles: bottomButtonTitles)
+        middleButtons.insert(shiftButton, at: 0)
+        var bottomButtons = createButtons(titles: bottomButtonTitles)
+        bottomButtons.insert(self.nextKeyboardButton, at: 0)
         
         for button in topButtons {
             topRow.addSubview(button)
@@ -168,7 +168,35 @@ class KeyboardViewController: UIInputViewController {
             "ꠒ": "ꠓ",
             "ꠓ": "ꠒ",
             "ꠙ": "ꠚ",
-            "ꠚ": "ꠙ"
+            "ꠚ": "ꠙ",
+            "ꠐ": "ꠑ",
+            "ꠑ": "ꠐ",
+            "ꠌ": "ꠍ",
+            "ꠍ": "ꠌ",
+            "ꠎ": "ꠏ",
+            "ꠏ": "ꠎ",
+            "ꠥ": "ꠃ",
+            "ꠃ": "ꠥ",
+            "ꠤ": "ꠁ",
+            "ꠁ": "ꠤ",
+            "ꠉ": "ꠊ",
+            "ꠊ": "ꠉ",
+            "ꠛ": "ꠜ",
+            "ꠜ": "ꠛ",
+            "ꠣ": "ꠀ",
+            "ꠀ": "ꠣ",
+            "ꠇ": "ꠈ",
+            "ꠈ": "ꠇ",
+            "ꠔ": "ꠕ",
+            "ꠕ": "ꠔ",
+            "ꠖ": "ꠗ",
+            "ꠗ": "ꠖ",
+            "ꠧ": "ꠅ",
+            "ꠅ": "ꠧ",
+            "ꠦ": "ꠄ",
+            "ꠄ": "ꠦ",
+            "ꠞ": "ꠟ",
+            "ꠟ": "ꠞ"
         ]
         
         for button in allButtons {
