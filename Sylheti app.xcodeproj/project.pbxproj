@@ -17,6 +17,7 @@
 		553E03F82459F1970092F8CF /* Sylheti_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03F72459F1970092F8CF /* Sylheti_appUITests.swift */; };
 		553E040C2459F1E40092F8CF /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E040B2459F1E40092F8CF /* KeyboardViewController.swift */; };
 		553E04102459F1E40092F8CF /* Sylheti keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 553E04092459F1E40092F8CF /* Sylheti keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5553CB012472D1A9006EEB43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553E03DE2459F1970092F8CF /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -323,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5553CB012472D1A9006EEB43 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

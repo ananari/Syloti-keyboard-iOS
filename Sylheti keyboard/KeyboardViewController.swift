@@ -65,7 +65,7 @@ class KeyboardViewController: UIInputViewController {
                 button.translatesAutoresizingMaskIntoConstraints = false;
                 button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
                 button.setTitleColor(.darkGray, for: .normal)
-                button.layer.cornerRadius = 5;
+                button.layer.cornerRadius = 10;
                 button.layer.shadowRadius = 1;
                 button.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
                 button.layer.shadowOpacity = 1;
@@ -122,7 +122,7 @@ class KeyboardViewController: UIInputViewController {
         shiftButton.translatesAutoresizingMaskIntoConstraints = false;
         shiftButton.backgroundColor = UIColor(white: 0.9, alpha: 1.0);
         shiftButton.setTitleColor(.darkGray, for: .normal)
-        shiftButton.layer.cornerRadius = 5;
+        shiftButton.layer.cornerRadius = 10;
         shiftButton.layer.shadowRadius = 1;
         shiftButton.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
         shiftButton.layer.shadowOpacity = 1;
@@ -130,10 +130,25 @@ class KeyboardViewController: UIInputViewController {
         shiftButton.layer.shadowOffset = CGSize(width: 0, height: 1)
         shiftButton.addTarget(self, action:#selector(toggleCaps), for: .touchUpInside)
         
+        let deleteButton = UIButton(type: .custom)
+        let delImage = #imageLiteral(resourceName: "delete")
+        deleteButton.setImage(delImage, for: .normal)
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false;
+        deleteButton.backgroundColor = UIColor(white: 0.9, alpha: 1.0);
+        deleteButton.setTitleColor(.darkGray, for: .normal)
+        deleteButton.layer.cornerRadius = 10;
+        deleteButton.layer.shadowRadius = 1;
+        deleteButton.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
+        deleteButton.layer.shadowOpacity = 1;
+        deleteButton.layer.shadowRadius = 0;
+        deleteButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        deleteButton.addTarget(self, action:#selector(handleDelete(sender:)), for: .touchUpInside)
+        
         
         let topButtons = createButtons(titles: topButtonTitles)
         var middleButtons = createButtons(titles: middleButtonTitles)
         middleButtons.insert(shiftButton, at: 0)
+        middleButtons.append(deleteButton)
         var bottomButtons = createButtons(titles: bottomButtonTitles)
         bottomButtons.insert(self.nextKeyboardButton, at: 0)
         
@@ -161,6 +176,10 @@ class KeyboardViewController: UIInputViewController {
         let button = sender! as UIButton
         let title = button.title(for: .normal)
         (textDocumentProxy as UIKeyInput).insertText(title!)
+    }
+    
+    @objc func handleDelete(sender: UIButton?) {
+        (textDocumentProxy as UIKeyInput).deleteBackward()
     }
     
     @objc func toggleCaps(_ sender: UIButton?) {
