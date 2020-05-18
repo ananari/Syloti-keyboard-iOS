@@ -32,12 +32,13 @@ class KeyboardViewController: UIInputViewController {
             button.translatesAutoresizingMaskIntoConstraints = false;
             button.backgroundColor = UIColor(white: colour, alpha: 1.0)
             button.setTitleColor(.darkGray, for: .normal)
-            button.layer.cornerRadius = 10;
+            button.layer.cornerRadius = 5;
             button.layer.shadowRadius = 1;
             button.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
             button.layer.shadowOpacity = 1;
             button.layer.shadowRadius = 0;
             button.layer.shadowOffset = CGSize(width: 0, height: 1)
+            button.frame.size = CGSize(width: 30, height: 40)
             return button;
         }
         
@@ -48,16 +49,16 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
 //        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 //        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        let topButtonTitles = ["ꠋ", "ꠒ", "ꠙ", "ꠐ", "ꠌ", "ꠎ", "ꠢ", "ꠉ", "ꠠ"]
-        let middleButtonTitles = ["ꠥ", "ꠤ", "ꠛ", "\u{A806}", "ꠣ", "ꠇ", "ꠔ", "ꠖ"]
-        let bottomButtonTitles = ["ꠂ", "ꠧ", "ꠦ", "ꠞ", "ꠘ", "ꠡ", "ꠝ"]
+        let topButtonTitles = ["ꠂ", "ꠣ", "ꠛ", "ꠢ", "ꠉ", "ꠖ", "ꠎ", "ꠒ", "ꠐ", "ꠠ"]
+        let middleButtonTitles = ["ꠧ", "ꠦ", "\u{A806}", "ꠤ", "ꠥ", "ꠙ", "ꠞ", "ꠇ", "ꠔ", "ꠌ", "ꠐ"]
+        let bottomButtonTitles = ["ꠋ", "ꠝ", "ꠘ", "ꠟ", "ꠡ"]
         
         
         
         let topRow = UIView(frame: CGRect(x:0, y:10, width:UIScreen.main.bounds.size.width, height:40))
         let middleRow = UIView(frame: CGRect(x:0, y:60, width:UIScreen.main.bounds.size.width, height:40))
         let bottomRow = UIView(frame: CGRect(x:0, y:110, width:UIScreen.main.bounds.size.width, height:40))
-        
+        let lastRow = UIView(frame: CGRect(x: 0, y: 160, width:UIScreen.main.bounds.size.width, height: 40))
 
         func createButtons(titles: [String]) -> [UIButton] {
                 
@@ -82,12 +83,11 @@ class KeyboardViewController: UIInputViewController {
                 let bottomConstraint = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: containingView, attribute: .bottom, multiplier: 1.0, constant: -1)
                 
                 var leftConstraint : NSLayoutConstraint!
-                
                 if index == 0 {
                     
                     leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: containingView, attribute: .left, multiplier: 1.0, constant: 1)
-                    
-                }else{
+
+                } else {
                     
                     leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: buttons[index-1], attribute: .right, multiplier: 1.0, constant: 5)
                     
@@ -102,30 +102,40 @@ class KeyboardViewController: UIInputViewController {
                     
                     rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: containingView, attribute: .right, multiplier: 1.0, constant: -1)
                     
-                }else{
                     
-                    rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: buttons[index+1], attribute: .left, multiplier: 1.0, constant: -5)
+                } else{
+
+                    rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: buttons[index + 1], attribute: .left, multiplier: 1.0, constant: -5)
+                    
                 }
                 
-                containingView.addConstraints([topConstraint, bottomConstraint, rightConstraint, leftConstraint])
+                containingView.addConstraints([topConstraint, bottomConstraint, leftConstraint, rightConstraint])
             }
         }
         
-        let shiftButton = createButton(title: "↑", colour: 0.9)
+        let shiftButton = createButton(title: "↑", colour: 0.9, type: .custom)
         shiftButton.addTarget(self, action:#selector(toggleCaps), for: .touchUpInside)
+        shiftButton.frame.size = CGSize(width: 50, height: 40)
+
         
         let deleteButton = createButton(title: nil, colour: 0.9, type: .custom)
         let delImage = #imageLiteral(resourceName: "delete")
         deleteButton.setImage(delImage, for: .normal)
         deleteButton.addTarget(self, action:#selector(handleDelete(sender:)), for: .touchUpInside)
         
+        let spaceButton = createButton(title: " ")
+        spaceButton.addTarget(self, action:#selector(keyPressed(_:)), for: .touchUpInside)
+        
+        let returnButton = createButton(title: "return")
+        returnButton.addTarget(self, action:#selector(handleReturn), for: .touchUpInside)
         
         let topButtons = createButtons(titles: topButtonTitles)
-        var middleButtons = createButtons(titles: middleButtonTitles)
-        middleButtons.insert(shiftButton, at: 0)
-        middleButtons.append(deleteButton)
+        let middleButtons = createButtons(titles: middleButtonTitles)
         var bottomButtons = createButtons(titles: bottomButtonTitles)
         bottomButtons.insert(self.nextKeyboardButton, at: 0)
+        bottomButtons.insert(shiftButton, at: 0)
+        bottomButtons.append(deleteButton)
+        let lastButtons: [UIButton] = [spaceButton, returnButton]
         
         for button in topButtons {
             topRow.addSubview(button)
@@ -136,15 +146,19 @@ class KeyboardViewController: UIInputViewController {
         for button in bottomButtons {
             bottomRow.addSubview(button)
         }
+        for button in lastButtons {
+            lastRow.addSubview(button)
+        }
         
         self.view.addSubview(topRow)
         self.view.addSubview(middleRow)
         self.view.addSubview(bottomRow)
+        self.view.addSubview(lastRow)
                 
         addConstraints(buttons: topButtons, containingView: topRow)
         addConstraints(buttons: middleButtons, containingView: middleRow)
         addConstraints(buttons: bottomButtons, containingView: bottomRow)
-        
+        addConstraints(buttons: lastButtons, containingView: lastRow)
     }
     
     @objc func keyPressed(_ sender: UIButton?) {
@@ -155,6 +169,10 @@ class KeyboardViewController: UIInputViewController {
     
     @objc func handleDelete(sender: UIButton?) {
         (textDocumentProxy as UIKeyInput).deleteBackward()
+    }
+    
+    @objc func handleReturn() {
+        (textDocumentProxy as UIKeyInput).insertText("\n")
     }
     
     @objc func toggleCaps(_ sender: UIButton?) {
@@ -188,9 +206,7 @@ class KeyboardViewController: UIInputViewController {
             "ꠧ": "ꠅ",
             "ꠅ": "ꠧ",
             "ꠦ": "ꠄ",
-            "ꠄ": "ꠦ",
-            "ꠞ": "ꠟ",
-            "ꠟ": "ꠞ"
+            "ꠄ": "ꠦ"
         ]
         
         for button in allButtons {
