@@ -25,23 +25,27 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
         
         // Perform custom UI setup here
-        self.nextKeyboardButton = UIButton(type: .system)
         
+        func createButton(title: String?, colour: CGFloat = 1.0, type: UIButton.ButtonType = .system) -> UIButton {
+            let button = UIButton(type: type)
+            button.setTitle(title, for: .normal)
+            button.translatesAutoresizingMaskIntoConstraints = false;
+            button.backgroundColor = UIColor(white: colour, alpha: 1.0)
+            button.setTitleColor(.darkGray, for: .normal)
+            button.layer.cornerRadius = 10;
+            button.layer.shadowRadius = 1;
+            button.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
+            button.layer.shadowOpacity = 1;
+            button.layer.shadowRadius = 0;
+            button.layer.shadowOffset = CGSize(width: 0, height: 1)
+            return button;
+        }
+        
+        self.nextKeyboardButton = createButton(title: "🌐", colour: 0.9)
         self.nextKeyboardButton.setTitle(NSLocalizedString("🌐", comment: "Title for 'Next Keyboard' button"), for: [])
         self.nextKeyboardButton.sizeToFit()
-        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        self.nextKeyboardButton.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-        self.nextKeyboardButton.setTitleColor(.darkGray, for: .normal)
-        self.nextKeyboardButton.layer.cornerRadius = 5;
-        self.nextKeyboardButton.layer.shadowRadius = 1;
-        self.nextKeyboardButton.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
-        self.nextKeyboardButton.layer.shadowOpacity = 1;
-        self.nextKeyboardButton.layer.shadowRadius = 0;
-        self.nextKeyboardButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-//        self.view.addSubview(self.nextKeyboardButton)
-        
 //        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 //        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         let topButtonTitles = ["ꠋ", "ꠒ", "ꠙ", "ꠐ", "ꠌ", "ꠎ", "ꠢ", "ꠉ", "ꠠ"]
@@ -60,17 +64,7 @@ class KeyboardViewController: UIInputViewController {
             var buttons = [UIButton]()
                 
             for title in titles {
-                let button = UIButton(type: .system) as UIButton
-                button.setTitle(title, for: .normal)
-                button.translatesAutoresizingMaskIntoConstraints = false;
-                button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
-                button.setTitleColor(.darkGray, for: .normal)
-                button.layer.cornerRadius = 10;
-                button.layer.shadowRadius = 1;
-                button.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
-                button.layer.shadowOpacity = 1;
-                button.layer.shadowRadius = 0;
-                button.layer.shadowOffset = CGSize(width: 0, height: 1)
+                let button = createButton(title: title)
                 button.addTarget(self, action:#selector(KeyboardViewController.keyPressed(_:)), for: .touchUpInside)
                 buttons.append(button)
                 allButtons.append(button)
@@ -117,31 +111,12 @@ class KeyboardViewController: UIInputViewController {
             }
         }
         
-        let shiftButton = UIButton(type: .system)
-        shiftButton.setTitle("\u{213A}", for: .normal)
-        shiftButton.translatesAutoresizingMaskIntoConstraints = false;
-        shiftButton.backgroundColor = UIColor(white: 0.9, alpha: 1.0);
-        shiftButton.setTitleColor(.darkGray, for: .normal)
-        shiftButton.layer.cornerRadius = 10;
-        shiftButton.layer.shadowRadius = 1;
-        shiftButton.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
-        shiftButton.layer.shadowOpacity = 1;
-        shiftButton.layer.shadowRadius = 0;
-        shiftButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        let shiftButton = createButton(title: "↑", colour: 0.9)
         shiftButton.addTarget(self, action:#selector(toggleCaps), for: .touchUpInside)
         
-        let deleteButton = UIButton(type: .custom)
+        let deleteButton = createButton(title: nil, colour: 0.9, type: .custom)
         let delImage = #imageLiteral(resourceName: "delete")
         deleteButton.setImage(delImage, for: .normal)
-        deleteButton.translatesAutoresizingMaskIntoConstraints = false;
-        deleteButton.backgroundColor = UIColor(white: 0.9, alpha: 1.0);
-        deleteButton.setTitleColor(.darkGray, for: .normal)
-        deleteButton.layer.cornerRadius = 10;
-        deleteButton.layer.shadowRadius = 1;
-        deleteButton.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
-        deleteButton.layer.shadowOpacity = 1;
-        deleteButton.layer.shadowRadius = 0;
-        deleteButton.layer.shadowOffset = CGSize(width: 0, height: 1)
         deleteButton.addTarget(self, action:#selector(handleDelete(sender:)), for: .touchUpInside)
         
         
