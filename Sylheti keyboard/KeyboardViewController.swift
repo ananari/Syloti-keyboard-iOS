@@ -83,17 +83,17 @@ class KeyboardViewController: UIInputViewController {
         }
         
         let shiftButton = createButton(title: "↑", colour: 0.9, type: .custom)
-        shiftButton.addTarget(self, action:#selector(toggleCaps), for: .touchUpInside)
+        shiftButton.addTarget(self, action:#selector(toggleCaps(sender:)), for: .touchUpInside)
 
         
         let deleteButton = createButton(title: nil, colour: 0.9, type: .custom)
         let delImage = #imageLiteral(resourceName: "delete")
         deleteButton.setBackgroundImage(delImage, for: .normal)
-        deleteButton.addTarget(self, action:#selector(handleDelete(sender:)), for: .touchUpInside)
+        deleteButton.addTarget(self, action:#selector(handleDelete), for: .touchUpInside)
         
         
-        let spaceButton = createButton(title: " ")
-        spaceButton.addTarget(self, action:#selector(keyPressed(_:)), for: .touchUpInside)
+        let spaceButton = createButton(title: "space")
+        spaceButton.addTarget(self, action:#selector(handleSpace), for: .touchUpInside)
         
         let returnButton = createButton(title: "return")
         returnButton.addTarget(self, action:#selector(handleReturn), for: .touchUpInside)
@@ -133,15 +133,20 @@ class KeyboardViewController: UIInputViewController {
         (textDocumentProxy as UIKeyInput).insertText(title!)
     }
     
-    @objc func handleDelete(sender: UIButton?) {
+    @objc func handleDelete() {
         (textDocumentProxy as UIKeyInput).deleteBackward()
+    }
+    
+    @objc func handleSpace() {
+        (textDocumentProxy as UIKeyInput).insertText(" ")
     }
     
     @objc func handleReturn() {
         (textDocumentProxy as UIKeyInput).insertText("\n")
     }
     
-    @objc func toggleCaps(_ sender: UIButton?) {
+    @objc func toggleCaps(sender: UIButton?) {
+        let shift = sender! as UIButton
         let capsDict: [String: String] = [
             "ꠒ": "ꠓ",
             "ꠓ": "ꠒ",
@@ -174,6 +179,16 @@ class KeyboardViewController: UIInputViewController {
             "ꠦ": "ꠄ",
             "ꠄ": "ꠦ"
         ]
+        
+        isCaps = !isCaps
+        if isCaps {
+            shift.backgroundColor = .black
+            shift.setTitleColor(.white, for: .normal)
+        }
+        else {
+            shift.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
+            shift.setTitleColor(.black, for: .normal)
+        }
         
         for button in allButtons {
             let title = button.title(for: .normal)!
