@@ -26,10 +26,12 @@ class KeyboardViewController: UIInputViewController {
         
         // Perform custom UI setup here
         
+        
         func createButton(title: String?, colour: CGFloat = 1.0, type: UIButton.ButtonType = .system) -> UIButton {
             let button = UIButton(type: type)
             button.setTitle(title, for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false;
+            button.sizeToFit()
             button.backgroundColor = UIColor(white: colour, alpha: 1.0)
             button.setTitleColor(.darkGray, for: .normal)
             button.layer.cornerRadius = 5;
@@ -49,116 +51,80 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
 //        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 //        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+//        self.view.addSubview(self.nextKeyboardButton)
         let topButtonTitles = ["ꠂ", "ꠣ", "ꠛ", "ꠢ", "ꠉ", "ꠖ", "ꠎ", "ꠒ", "ꠐ", "ꠠ"]
         let middleButtonTitles = ["ꠧ", "ꠦ", "\u{A806}", "ꠤ", "ꠥ", "ꠙ", "ꠞ", "ꠇ", "ꠔ", "ꠌ", "ꠐ"]
         let bottomButtonTitles = ["ꠋ", "ꠝ", "ꠘ", "ꠟ", "ꠡ"]
-        
-        
-        
-        let topRow = UIView(frame: CGRect(x:0, y:10, width:UIScreen.main.bounds.size.width, height:40))
-        let middleRow = UIView(frame: CGRect(x:0, y:60, width:UIScreen.main.bounds.size.width, height:40))
-        let bottomRow = UIView(frame: CGRect(x:0, y:110, width:UIScreen.main.bounds.size.width, height:40))
-        let lastRow = UIView(frame: CGRect(x: 0, y: 160, width:UIScreen.main.bounds.size.width, height: 40))
-
-        func createButtons(titles: [String]) -> [UIButton] {
-                
-            var buttons = [UIButton]()
-                
+        func addKeys(titles: [String]) -> UIView {
+            
+            let RowStackView = UIStackView.init()
+            RowStackView.spacing = 5
+            RowStackView.axis = .horizontal
+            RowStackView.alignment = .fill
+            RowStackView.distribution = .fillEqually
+            
             for title in titles {
                 let button = createButton(title: title)
                 button.addTarget(self, action:#selector(KeyboardViewController.keyPressed(_:)), for: .touchUpInside)
-                buttons.append(button)
                 allButtons.append(button)
+                RowStackView.addArrangedSubview(button)
             }
-                
-            return buttons
-        }
-        
-        func addConstraints(buttons: [UIButton], containingView: UIView){
             
-            for (index, button) in buttons.enumerated() {
-                
-                let topConstraint = NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: containingView, attribute: .top, multiplier: 1.0, constant: 1)
-                
-                let bottomConstraint = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: containingView, attribute: .bottom, multiplier: 1.0, constant: -1)
-                
-                var leftConstraint : NSLayoutConstraint!
-                if index == 0 {
-                    
-                    leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: containingView, attribute: .left, multiplier: 1.0, constant: 1)
-
-                } else {
-                    
-                    leftConstraint = NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: buttons[index-1], attribute: .right, multiplier: 1.0, constant: 5)
-                    
-                    let widthConstraint = NSLayoutConstraint(item: buttons[0], attribute: .width, relatedBy: .equal, toItem: button, attribute: .width, multiplier: 1.0, constant: 0)
-                    
-                    containingView.addConstraint(widthConstraint)
-                }
-                
-                var rightConstraint : NSLayoutConstraint!
-                
-                if index == buttons.count - 1 {
-                    
-                    rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: containingView, attribute: .right, multiplier: 1.0, constant: -1)
-                    
-                    
-                } else{
-
-                    rightConstraint = NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: buttons[index + 1], attribute: .left, multiplier: 1.0, constant: -5)
-                    
-                }
-                
-                containingView.addConstraints([topConstraint, bottomConstraint, leftConstraint, rightConstraint])
-            }
+            let viewDict = ["RowStackView": RowStackView]
+            
+            let keysView = UIStackView()
+            keysView.backgroundColor = .clear
+            keysView.addArrangedSubview(RowStackView)
+            keysView.addConstraints(NSLayoutConstraint.constraints(
+                withVisualFormat: "H:|[RowStackView]|", metrics: nil, views: viewDict))
+            keysView.addConstraints(NSLayoutConstraint.constraints(
+                withVisualFormat: "V:|[RowStackView]|", metrics: nil, views: viewDict))
+            return keysView
         }
         
         let shiftButton = createButton(title: "↑", colour: 0.9, type: .custom)
         shiftButton.addTarget(self, action:#selector(toggleCaps), for: .touchUpInside)
-        shiftButton.frame.size = CGSize(width: 50, height: 40)
 
         
         let deleteButton = createButton(title: nil, colour: 0.9, type: .custom)
         let delImage = #imageLiteral(resourceName: "delete")
-        deleteButton.setImage(delImage, for: .normal)
+        deleteButton.setBackgroundImage(delImage, for: .normal)
         deleteButton.addTarget(self, action:#selector(handleDelete(sender:)), for: .touchUpInside)
+        
         
         let spaceButton = createButton(title: " ")
         spaceButton.addTarget(self, action:#selector(keyPressed(_:)), for: .touchUpInside)
         
         let returnButton = createButton(title: "return")
         returnButton.addTarget(self, action:#selector(handleReturn), for: .touchUpInside)
+        returnButton.backgroundColor = .systemBlue
+        returnButton.setTitleColor(.white, for: .normal)
         
-        let topButtons = createButtons(titles: topButtonTitles)
-        let middleButtons = createButtons(titles: middleButtonTitles)
-        var bottomButtons = createButtons(titles: bottomButtonTitles)
-        bottomButtons.insert(self.nextKeyboardButton, at: 0)
-        bottomButtons.insert(shiftButton, at: 0)
-        bottomButtons.append(deleteButton)
-        let lastButtons: [UIButton] = [spaceButton, returnButton]
+        let topRow = addKeys(titles: topButtonTitles)
+        let middleRow = addKeys(titles: middleButtonTitles)
+        let bottomKeys = addKeys(titles: bottomButtonTitles)
+        let bottomRow = UIStackView(arrangedSubviews: [shiftButton, bottomKeys, deleteButton])
+        bottomRow.distribution = .fillProportionally
+        bottomRow.spacing = 5
+        let functionRow = UIStackView(arrangedSubviews: [self.nextKeyboardButton, spaceButton, returnButton])
+        functionRow.distribution = .fillProportionally
+        functionRow.spacing = 5
+        spaceButton.widthAnchor.constraint(equalTo: spaceButton.superview!.widthAnchor, multiplier: 0.5).isActive = true
         
-        for button in topButtons {
-            topRow.addSubview(button)
-        }
-        for button in middleButtons {
-            middleRow.addSubview(button)
-        }
-        for button in bottomButtons {
-            bottomRow.addSubview(button)
-        }
-        for button in lastButtons {
-            lastRow.addSubview(button)
-        }
         
-        self.view.addSubview(topRow)
-        self.view.addSubview(middleRow)
-        self.view.addSubview(bottomRow)
-        self.view.addSubview(lastRow)
-                
-        addConstraints(buttons: topButtons, containingView: topRow)
-        addConstraints(buttons: middleButtons, containingView: middleRow)
-        addConstraints(buttons: bottomButtons, containingView: bottomRow)
-        addConstraints(buttons: lastButtons, containingView: lastRow)
+        let mainStackView = UIStackView(arrangedSubviews: [topRow,middleRow,bottomRow, functionRow])
+        mainStackView.axis = .vertical
+        mainStackView.spacing = 3.0
+        mainStackView.distribution = .fillEqually
+        mainStackView.alignment = .fill
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(mainStackView)
+        
+        mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 2).isActive = true
+        mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 2).isActive = true
+        mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -2).isActive = true
+        mainStackView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
     }
     
     @objc func keyPressed(_ sender: UIButton?) {
