@@ -20,22 +20,28 @@ class KeyboardViewController: UIInputViewController {
     
     var allButtons = [UIButton]();
     var mainStackView : UIStackView!
-    
+    var showChars: Bool = false
+    var showBengaliNums: Bool = false
     var isCaps: Bool = false
     var showLetters: Bool = true {
         didSet {
             if showLetters {
+                showChars = false
+                showBengaliNums = false
                 for view in mainStackView.arrangedSubviews {
                     view.removeFromSuperview()
                 }
-                addKeyboard()
+                addLetters()
                 
             }
             else {
+                isCaps = false
                 addNumbers()
             }
         }
     }
+
+    
 
     
 
@@ -48,11 +54,11 @@ class KeyboardViewController: UIInputViewController {
 //        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 //        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
 //        self.view.addSubview(self.nextKeyboardButton)
-        addKeyboard()
+        addLetters()
 
     }
     
-    func addKeyboard() {
+    func addLetters() {
         let topButtonTitles = ["ꠂ", "ꠣ", "ꠛ", "ꠢ", "ꠉ", "ꠖ", "ꠎ", "ꠒ", "ꠐ", "ꠠ"]
         let middleButtonTitles = ["ꠧ", "ꠦ", "\u{A806}", "ꠤ", "ꠥ", "ꠙ", "ꠞ", "ꠇ", "ꠔ", "ꠌ", "ꠐ"]
         let bottomButtonTitles = ["ꠋ", "ꠝ", "ꠘ", "ꠟ", "ꠡ"]
@@ -116,9 +122,14 @@ class KeyboardViewController: UIInputViewController {
         
         let topButtonTitles = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
         let middleButtonTitles = ["-", "/", ":", ";", "(", ")", "£", "&", "@", "\""]
-        let bottomButtonTitles = [".", "।", ",", "?", "!", "'"]
+        let bottomButtonTitles = ["।", ".", ",", "?", "!", "'"]
         
         let otherCharsButton = createButton(title: "#+=", colour: 0.9, type: .custom, bigTitle: false)
+        otherCharsButton.addTarget(self, action:#selector(toggleOtherChars(sender:)), for: .touchUpInside)
+        
+        let bengaliNumsButton = createButton(title: "১২৩", colour: 0.9, type: .custom, bigTitle: false)
+        bengaliNumsButton.addTarget(self, action:#selector(toggleBengaliNums(sender:)), for: .touchUpInside)
+        
 
         let deleteButton = createDeleteButton()
         
@@ -134,9 +145,9 @@ class KeyboardViewController: UIInputViewController {
         let topRow = addKeys(titles: topButtonTitles)
         let middleRow = addKeys(titles: middleButtonTitles)
         let bottomKeys = addKeys(titles: bottomButtonTitles)
-        let bottomRow = UIStackView(arrangedSubviews: [otherCharsButton, bottomKeys, deleteButton])
+        let bottomRow = UIStackView(arrangedSubviews: [otherCharsButton, bengaliNumsButton, bottomKeys, deleteButton])
         bottomRow.distribution = .fillProportionally
-        bottomRow.spacing = 10
+        bottomRow.spacing = 5
         let functionRow = UIStackView(arrangedSubviews: [abcButton, self.nextKeyboardButton, spaceButton, returnButton])
         functionRow.distribution = .fillProportionally
         functionRow.spacing = 5
@@ -288,7 +299,7 @@ class KeyboardViewController: UIInputViewController {
         for button in allButtons {
             let title = button.title(for: .normal)!
             if capsDict[title] != nil {
-                button.setTitle(capsDict[title], for: .normal)
+                setTitleNoAnim(button: button, title: capsDict[title]!)
             }
         }
         
@@ -296,6 +307,122 @@ class KeyboardViewController: UIInputViewController {
 
     @objc func toggleNum() {
         showLetters = !showLetters
+    }
+    
+    @objc func toggleOtherChars(sender: UIButton?) {
+        let otherChars = sender! as UIButton
+        let charsDict: [String: String] = [
+            "1": "[",
+            "[": "1",
+            "2": "]",
+            "]": "2",
+            "{": "3",
+            "3": "{",
+            "}": "4",
+            "4": "}",
+            "#": "5",
+            "5": "#",
+            "6": "%",
+            "%": "6",
+            "7": "^",
+            "^": "7",
+            "8": "*",
+            "*": "8",
+            "9": "+",
+            "+": "9",
+            "=": "0",
+            "0": "=",
+            "-": "_",
+            "_": "-",
+            "/": "\\",
+            "\\": "/",
+            ":": "|",
+            "|": ":",
+            ";": "~",
+            "~": ";",
+            "(": "<",
+            "<": "(",
+            ")": ">",
+            ">": ")",
+            "£": "$",
+            "$": "£",
+            "@": "৳",
+            "৳": "@",
+            "¥": "‌‍₹",
+            "‌‍₹": "¥",
+            "\"": "•",
+            "•": "\""
+        ]
+        showChars = !showChars
+        if showChars {
+            setTitleNoAnim(button: otherChars, title: "123")
+        }
+        else {
+            setTitleNoAnim(button: otherChars, title: "#+=")
+        }
+        for button in allButtons {
+            let title = button.title(for: .normal)!
+            if charsDict[title] != nil {
+                setTitleNoAnim(button: button, title: charsDict[title]!)
+            }
+        }
+    }
+    
+    @objc func toggleBengaliNums(sender: UIButton?) {
+        let benNums = sender!
+        let benDict: [String: String] = [
+            "1": "১",
+            "১": "1",
+            "2": "২",
+            "২": "2",
+            "৩": "3",
+            "3": "৩",
+            "৪": "4",
+            "4": "৪",
+            "৫": "5",
+            "5": "৫",
+            "6": "৬",
+            "৬": "6",
+            "7": "৭",
+            "৭": "7",
+            "8": "৮",
+            "৮": "8",
+            "9": "৯",
+            "৯": "9",
+            "০": "0",
+            "0": "০",
+            ".": "꠨",
+            "꠨": ".",
+            ",": "꠩",
+            "꠩": ",",
+            "?": "꠪",
+            "꠪": "?",
+            "!": "꠫",
+            "꠫": "!"
+        ]
+        if !showLetters && !showChars {
+            showBengaliNums = !showBengaliNums
+            if showBengaliNums {
+                setTitleNoAnim(button: benNums, title: "123")
+            }
+            else {
+                setTitleNoAnim(button: benNums, title: "১২৩")
+            }
+            for button in allButtons {
+                let title = button.title(for: .normal)!
+                if benDict[title] != nil {
+                    setTitleNoAnim(button: button, title: benDict[title]!)
+
+                }
+            }
+        }
+    }
+    
+    @objc private func setTitleNoAnim(button: UIButton, title: String){
+        UIView.performWithoutAnimation {
+            button.setTitle(title, for: .normal)
+            button.layoutIfNeeded()
+        }
     }
     
     
