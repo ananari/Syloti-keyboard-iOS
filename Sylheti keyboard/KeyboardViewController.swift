@@ -234,7 +234,9 @@ class KeyboardViewController: UIInputViewController {
     @objc func keyPressed(_ sender: UIButton?) {
         let button = sender! as UIButton
         let title = button.title(for: .normal)
-        toggleCaps(sender: allButtons.first!)
+        if isCaps {
+            toggleCaps(sender: allButtons.first!)
+        }
         (textDocumentProxy as UIKeyInput).insertText(title!)
     }
     
