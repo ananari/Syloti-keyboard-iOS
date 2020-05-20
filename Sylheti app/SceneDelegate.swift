@@ -2,12 +2,12 @@
 //  SceneDelegate.swift
 //  Sylheti app
 //
-//  Created by 9999 on 4/29/20.
+//  Created by Anaïs on 4/29/20.
 //  Copyright © 2020 Anaïs. All rights reserved.
 //
 
 import UIKit
-
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
