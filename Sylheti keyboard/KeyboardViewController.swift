@@ -18,6 +18,7 @@ class KeyboardViewController: UIInputViewController {
         // Add custom view sizing constraints here
     }
     
+    
     var allButtons = [UIButton]();
     var mainStackView : UIStackView!
     var showChars: Bool = false
@@ -54,9 +55,12 @@ class KeyboardViewController: UIInputViewController {
 //        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 //        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
 //        self.view.addSubview(self.nextKeyboardButton)
+        
+        
         addLetters()
 
     }
+
     
     func addLetters() {
         let topButtonTitles = ["ꠂ", "ꠣ", "ꠛ", "ꠢ", "ꠉ", "ꠖ", "ꠎ", "ꠒ", "ꠐ", "ꠠ"]
@@ -215,7 +219,10 @@ class KeyboardViewController: UIInputViewController {
     }
     
     
-    func handleMainStackView(stacks: [UIStackView]) {
+    @objc func handleMainStackView(stacks: [UIStackView]) {
+
+        
+        
         mainStackView = UIStackView(arrangedSubviews: stacks)
         mainStackView.axis = .vertical
         mainStackView.spacing = 10
@@ -227,7 +234,7 @@ class KeyboardViewController: UIInputViewController {
         mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 2).isActive = true
         mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5).isActive = true
         mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -2).isActive = true
-        mainStackView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        mainStackView.heightAnchor.constraint(equalTo: view.heightAnchor, constant: -10).isActive = true
     }
 
     
@@ -419,6 +426,7 @@ class KeyboardViewController: UIInputViewController {
             }
         }
     }
+    
     
     @objc private func setTitleNoAnim(button: UIButton, title: String){
         UIView.performWithoutAnimation {
