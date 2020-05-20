@@ -67,7 +67,7 @@ class KeyboardViewController: UIInputViewController {
         let middleButtonTitles = ["ꠧ", "ꠦ", "\u{A806}", "ꠤ", "ꠥ", "ꠙ", "ꠞ", "ꠇ", "ꠔ", "ꠌ", "ꠐ"]
         let bottomButtonTitles = ["ꠋ", "ꠝ", "ꠘ", "ꠟ", "ꠡ"]
         
-        let shiftButton = createButton(title: "↑", colour: 0.9, type: .custom)
+        let shiftButton = createButton(title: "⇧", colour: 0.9, type: .custom)
         shiftButton.addTarget(self, action:#selector(toggleCaps(sender:)), for: .touchUpInside)
         allButtons.append(shiftButton)
 
@@ -190,9 +190,7 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func createDeleteButton() -> UIButton {
-        let deleteButton = createButton(title: nil, colour: 0.9, type: .custom)
-        let delImage = #imageLiteral(resourceName: "delete")
-        deleteButton.setBackgroundImage(delImage, for: .normal)
+        let deleteButton = createButton(title: "⌫", colour: 0.9, type: .custom)
         deleteButton.addTarget(self, action:#selector(handleDelete), for: .touchUpInside)
         return deleteButton
     }
