@@ -88,10 +88,6 @@ class KeyboardViewController: UIInputViewController {
 //        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 //        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
 //        self.view.addSubview(self.nextKeyboardButton)
-        print("view did load")
-        
-        
-        
         addLetters()
 
     }
