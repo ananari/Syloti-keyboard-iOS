@@ -55,8 +55,8 @@ class KeyboardViewController: UIInputViewController {
     }
     let normalKeyColour = UIColor(white: 1.0, alpha: 1.0)
     let specialKeyColour = UIColor(white: 0.9, alpha: 1.0)
-    let normalDarkKeyColour = UIColor(white: 0.5, alpha: 1.0)
-    let specialDarkKeyColour = UIColor(white: 0.4, alpha: 1.0)
+    let normalDarkKeyColour = UIColor(white: 0.4, alpha: 1.0)
+    let specialDarkKeyColour = UIColor(white: 0.3, alpha: 1.0)
     var showLetters: Bool = true {
         didSet {
             if showLetters {
@@ -145,7 +145,7 @@ class KeyboardViewController: UIInputViewController {
             button.backgroundColor = UIColor(white: colour, alpha: 1.0)
             button.setTitleColor(.black, for: .normal)
         } else {
-            button.backgroundColor = UIColor(white: colour - 0.5, alpha: 1.0)
+            button.backgroundColor = UIColor(white: colour - 0.6, alpha: 1.0)
             button.setTitleColor(.white, for: .normal)
         }
         button.layer.cornerRadius = 5;
@@ -190,7 +190,7 @@ class KeyboardViewController: UIInputViewController {
             sender.setTitleColor(.black, for: .normal)
         }
         else {
-            sender.backgroundColor = UIColor(white: colour - 0.5, alpha: 1.0)
+            sender.backgroundColor = UIColor(white: colour - 0.6, alpha: 1.0)
             sender.setTitleColor(.white, for: .normal)
         }
     }
