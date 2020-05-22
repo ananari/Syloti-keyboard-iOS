@@ -137,7 +137,7 @@ class KeyboardViewController: UIInputViewController {
         let button = UIButton(type: type)
         button.setTitle(title, for: .normal)
         if bigTitle {
-            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+            button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         }
         button.translatesAutoresizingMaskIntoConstraints = false;
 //        button.sizeToFit()
