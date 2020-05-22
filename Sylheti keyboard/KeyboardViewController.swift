@@ -204,7 +204,7 @@ class KeyboardViewController: UIInputViewController {
         let longPresser = UILongPressGestureRecognizer.init(target: self, action: #selector(handleBackspaceLongPress(longPress:)))
         longPresser.minimumPressDuration = 0.5
         longPresser.numberOfTouchesRequired = 1
-        longPresser.allowableMovement = 0.1
+        longPresser.allowableMovement = 5
         deleteButton.addGestureRecognizer(longPresser)
         return deleteButton
     }
@@ -401,17 +401,19 @@ class KeyboardViewController: UIInputViewController {
             "\"": "•",
             "•": "\""
         ]
-        showChars = !showChars
-        if showChars {
-            setTitleNoAnim(button: otherChars, title: "123")
-        }
-        else {
-            setTitleNoAnim(button: otherChars, title: "#+=")
-        }
-        for button in allButtons {
-            let title = button.title(for: .normal)!
-            if charsDict[title] != nil {
-                setTitleNoAnim(button: button, title: charsDict[title]!)
+        if !showBengaliNums {
+            showChars = !showChars
+            if showChars {
+                setTitleNoAnim(button: otherChars, title: "123")
+            }
+            else {
+                setTitleNoAnim(button: otherChars, title: "#+=")
+            }
+            for button in allButtons {
+                let title = button.title(for: .normal)!
+                if charsDict[title] != nil {
+                    setTitleNoAnim(button: button, title: charsDict[title]!)
+                }
             }
         }
     }
