@@ -20,10 +20,43 @@ class KeyboardViewController: UIInputViewController {
     
     
     var allButtons = [UIButton]();
+    var allTextButtons = [UIButton]();
     var mainStackView : UIStackView!
     var showChars: Bool = false
     var showBengaliNums: Bool = false
     var isCaps: Bool = false
+    var kbAppearance: UIKeyboardAppearance = .default {
+        didSet {
+            if kbAppearance != oldValue {
+                if kbAppearance == .dark {
+                    for button in allButtons {
+                        if button.tag == 1 {
+                            button.backgroundColor = normalDarkKeyColour
+                        }
+                        else {
+                            button.backgroundColor = specialDarkKeyColour
+                        }
+                        button.setTitleColor(.white, for: .normal)
+                    }
+                }
+                else {
+                    for button in allButtons {
+                        if button.tag == 1 {
+                            button.backgroundColor = normalKeyColour
+                        }
+                        else {
+                            button.backgroundColor = specialKeyColour
+                        }
+                        button.setTitleColor(.black, for: .normal)
+                    }
+                }
+            }
+        }
+    }
+    let normalKeyColour = UIColor(white: 1.0, alpha: 1.0)
+    let specialKeyColour = UIColor(white: 0.9, alpha: 1.0)
+    let normalDarkKeyColour = UIColor(white: 0.5, alpha: 1.0)
+    let specialDarkKeyColour = UIColor(white: 0.4, alpha: 1.0)
     var showLetters: Bool = true {
         didSet {
             if showLetters {
@@ -55,6 +88,8 @@ class KeyboardViewController: UIInputViewController {
 //        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 //        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
 //        self.view.addSubview(self.nextKeyboardButton)
+        print("view did load")
+        
         
         
         addLetters()
@@ -67,9 +102,9 @@ class KeyboardViewController: UIInputViewController {
         let middleButtonTitles = ["ꠧ", "ꠦ", "\u{A806}", "ꠤ", "ꠥ", "ꠙ", "ꠞ", "ꠇ", "ꠔ", "ꠌ", "ꠐ"]
         let bottomButtonTitles = ["ꠋ", "ꠝ", "ꠘ", "ꠟ", "ꠡ"]
         
-        let shiftButton = createButton(title: "⇧", colour: 0.9, type: .custom, keyDown: false)
+        let shiftButton = createButton(title: "⇧", colour: 0.9, type: .custom, keyDown: false, isText: false)
         shiftButton.addTarget(self, action:#selector(toggleCaps(sender:)), for: .touchUpInside)
-        allButtons.append(shiftButton)
+        allTextButtons.append(shiftButton)
 
         let deleteButton = createDeleteButton()
         
@@ -79,7 +114,7 @@ class KeyboardViewController: UIInputViewController {
         
         let returnButton = createReturnButton()
         
-        let numButton = createButton(title: "123", colour: 0.9, type: .custom, bigTitle: false)
+        let numButton = createButton(title: "123", colour: 0.9, type: .custom, bigTitle: false, isText: false)
         numButton.addTarget(self, action:#selector(toggleNum), for: .touchUpInside)
         
         let topRow = addKeys(titles: topButtonTitles)
@@ -98,34 +133,68 @@ class KeyboardViewController: UIInputViewController {
         handleMainStackView(stacks: [topRow, middleRow, bottomRow, functionRow])
     }
     
-    func createButton(title: String?, colour: CGFloat = 1.0, type: UIButton.ButtonType = .system, bigTitle: Bool = true, keyDown: Bool = true) -> UIButton {
+    func createButton(title: String?, colour: CGFloat = 1.0, type: UIButton.ButtonType = .system, bigTitle: Bool = true, keyDown: Bool = true, isText: Bool = true, isReturn: Bool = false) -> UIButton {
         let button = UIButton(type: type)
         button.setTitle(title, for: .normal)
         if bigTitle {
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         }
         button.translatesAutoresizingMaskIntoConstraints = false;
-        button.sizeToFit()
-        button.backgroundColor = UIColor(white: colour, alpha: 1.0)
-        button.setTitleColor(.darkGray, for: .normal)
+//        button.sizeToFit()
+        if textDocumentProxy.keyboardAppearance != .dark {
+            button.backgroundColor = UIColor(white: colour, alpha: 1.0)
+            button.setTitleColor(.black, for: .normal)
+        } else {
+            button.backgroundColor = UIColor(white: colour - 0.5, alpha: 1.0)
+            button.setTitleColor(.white, for: .normal)
+        }
         button.layer.cornerRadius = 5;
         button.layer.shadowRadius = 1;
         button.layer.shadowColor = UIColor(white: 0.4, alpha: 1.0).cgColor;
         button.layer.shadowOpacity = 1;
         button.layer.shadowRadius = 0;
         button.layer.shadowOffset = CGSize(width: 0, height: 1)
-        button.frame.size = CGSize(width: 30, height: 40)
+//        button.frame.size = CGSize(width: 30, height: 40)
         if keyDown {
             button.addTarget(self, action:#selector(highlightButton(sender:)), for: .touchDown)
+        }
+        
+        if !isReturn {
+            allButtons.append(button);
+            if isText {
+                allTextButtons.append(button);
+                button.tag = 1
+            }
+            else {
+                button.tag = 0
+            }
         }
 
         return button;
     }
     
     @objc func highlightButton(sender: UIButton) {
-        sender.backgroundColor = .darkGray
-        sender.setTitleColor(.white, for: .normal)
+        if textDocumentProxy.keyboardAppearance != .dark {
+            sender.backgroundColor = .darkGray
+            sender.setTitleColor(.white, for: .normal)
+        }
+        else {
+            sender.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
+            sender.setTitleColor(.black, for: .normal)
+        }
     }
+    
+    @objc func unhighlightButton(sender: UIButton, colour: CGFloat = 1.0){
+        if textDocumentProxy.keyboardAppearance != .dark {
+            sender.backgroundColor = UIColor(white: colour, alpha: 1.0)
+            sender.setTitleColor(.black, for: .normal)
+        }
+        else {
+            sender.backgroundColor = UIColor(white: colour - 0.5, alpha: 1.0)
+            sender.setTitleColor(.white, for: .normal)
+        }
+    }
+    
     
     func addNumbers() {
         
@@ -137,10 +206,10 @@ class KeyboardViewController: UIInputViewController {
         let middleButtonTitles = ["-", "/", ":", ";", "(", ")", "£", "&", "@", "\""]
         let bottomButtonTitles = ["।", ".", ",", "?", "!", "'"]
         
-        let otherCharsButton = createButton(title: "#+=", colour: 0.9, type: .custom, bigTitle: false)
+        let otherCharsButton = createButton(title: "#+=", colour: 0.9, type: .custom, bigTitle: false, isText: false)
         otherCharsButton.addTarget(self, action:#selector(toggleOtherChars(sender:)), for: .touchUpInside)
         
-        let bengaliNumsButton = createButton(title: "১২৩", colour: 0.9, type: .custom, bigTitle: false)
+        let bengaliNumsButton = createButton(title: "১২৩", colour: 0.9, type: .custom, bigTitle: false, isText: false)
         bengaliNumsButton.addTarget(self, action:#selector(toggleBengaliNums(sender:)), for: .touchUpInside)
         
 
@@ -152,7 +221,7 @@ class KeyboardViewController: UIInputViewController {
         
         let returnButton = createReturnButton()
         
-        let abcButton = createButton(title: "ꠇꠈꠉ", colour: 0.9, type: .custom, bigTitle: false)
+        let abcButton = createButton(title: "ꠇ", colour: 0.9, type: .custom, bigTitle: false, isText: false)
         abcButton.addTarget(self, action:#selector(toggleNum), for: .touchUpInside)
         
         let topRow = addKeys(titles: topButtonTitles)
@@ -173,33 +242,32 @@ class KeyboardViewController: UIInputViewController {
     
     func addKeys(titles: [String]) -> UIStackView {
         
-        let RowStackView = UIStackView.init()
-        RowStackView.spacing = 5
-        RowStackView.axis = .horizontal
-        RowStackView.alignment = .fill
-        RowStackView.distribution = .fillEqually
+        let rowStackView = UIStackView.init()
+        rowStackView.spacing = 5
+        rowStackView.axis = .horizontal
+        rowStackView.alignment = .fill
+        rowStackView.distribution = .fillEqually
         
         for title in titles {
             let button = createButton(title: title)
-            button.addTarget(self, action:#selector(KeyboardViewController.keyPressed(_:)), for: .touchUpInside)
-            allButtons.append(button)
-            RowStackView.addArrangedSubview(button)
+            button.addTarget(self, action:#selector(keyPressed(_:)), for: .touchUpInside)
+            rowStackView.addArrangedSubview(button)
         }
         
-        let viewDict = ["RowStackView": RowStackView]
+        let viewDict = ["rowStackView": rowStackView]
         
         let keysView = UIStackView()
         keysView.backgroundColor = .clear
-        keysView.addArrangedSubview(RowStackView)
+        keysView.addArrangedSubview(rowStackView)
         keysView.addConstraints(NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|[RowStackView]|", metrics: nil, views: viewDict))
+            withVisualFormat: "H:|[rowStackView]|", metrics: nil, views: viewDict))
         keysView.addConstraints(NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|[RowStackView]|", metrics: nil, views: viewDict))
-        return keysView
+            withVisualFormat: "V:|[rowStackView]|", metrics: nil, views: viewDict))
+        return rowStackView
     }
     
     func createDeleteButton() -> UIButton {
-        let deleteButton = createButton(title: "⌫", colour: 0.9, type: .custom)
+        let deleteButton = createButton(title: "⌫", colour: 0.9, type: .custom, isText: false)
         deleteButton.addTarget(self, action:#selector(handleDelete(sender:)), for: .touchUpInside)
         let longPresser = UILongPressGestureRecognizer.init(target: self, action: #selector(handleBackspaceLongPress(longPress:)))
         longPresser.minimumPressDuration = 0.5
@@ -216,7 +284,7 @@ class KeyboardViewController: UIInputViewController {
           case .ended:
             let button = longPress.view! as! UIButton
             button.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-            button.setTitleColor(.darkGray, for: .normal)
+            button.setTitleColor(.black, for: .normal)
           default:
             self.textDocumentProxy.deleteBackward()
         }
@@ -224,7 +292,7 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func createNextKBButton() -> UIButton {
-        let nextKBButton = createButton(title: "🌐", colour: 0.9, keyDown: false)
+        let nextKBButton = createButton(title: "🌐", colour: 0.9, keyDown: false, isText: false)
         nextKBButton.setTitle(NSLocalizedString("🌐", comment: "Title for 'Next Keyboard' button"), for: [])
         nextKBButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         return nextKBButton
@@ -237,7 +305,7 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func createReturnButton() -> UIButton {
-        let returnButton = createButton(title: "return", bigTitle: false, keyDown: false)
+        let returnButton = createButton(title: "return", bigTitle: false, keyDown: false, isText: false, isReturn: true)
         returnButton.addTarget(self, action:#selector(handleReturn), for: .touchUpInside)
         returnButton.backgroundColor = .systemBlue
         returnButton.setTitleColor(.white, for: .normal)
@@ -246,9 +314,6 @@ class KeyboardViewController: UIInputViewController {
     
     
     @objc func handleMainStackView(stacks: [UIStackView]) {
-
-        
-        
         mainStackView = UIStackView(arrangedSubviews: stacks)
         mainStackView.axis = .vertical
         mainStackView.spacing = 10
@@ -271,21 +336,18 @@ class KeyboardViewController: UIInputViewController {
         if isCaps {
             toggleCaps(sender: allButtons.first!)
         }
-        button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
-        button.setTitleColor(.darkGray, for: .normal)
+        unhighlightButton(sender: sender!)
         (textDocumentProxy as UIKeyInput).insertText(title!)
     }
     
     @objc func handleDelete(sender: UIButton) {
-        sender.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-        sender.setTitleColor(.darkGray, for: .normal)
+        unhighlightButton(sender: sender, colour: 0.9)
         (textDocumentProxy as UIKeyInput).deleteBackward()
     }
     
     
     @objc func handleSpace(sender: UIButton) {
-        sender.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
-        sender.setTitleColor(.darkGray, for: .normal)
+        unhighlightButton(sender: sender)
         (textDocumentProxy as UIKeyInput).insertText(" ")
     }
     
@@ -332,12 +394,23 @@ class KeyboardViewController: UIInputViewController {
         
         isCaps = !isCaps
         if isCaps {
-            shift.backgroundColor = .black
-            shift.setTitleColor(.white, for: .normal)
+            if textDocumentProxy.keyboardAppearance == .dark {
+                shift.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
+                shift.setTitleColor(.black, for: .normal)
+            }
+            else {
+                shift.backgroundColor = .black
+                shift.setTitleColor(.white, for: .normal)
+            }
         }
         else {
-            shift.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-            shift.setTitleColor(.black, for: .normal)
+            if textDocumentProxy.keyboardAppearance == .dark {
+                shift.backgroundColor = specialDarkKeyColour
+                shift.setTitleColor(.white, for: .normal)
+            }
+            else {
+                unhighlightButton(sender: shift, colour: 0.9)
+            }
         }
         
         for button in allButtons {
@@ -350,15 +423,13 @@ class KeyboardViewController: UIInputViewController {
     }
 
     @objc func toggleNum(sender: UIButton) {
-        sender.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-        sender.setTitleColor(.darkGray, for: .normal)
+        unhighlightButton(sender: sender, colour: 0.9)
         showLetters = !showLetters
     }
     
     @objc func toggleOtherChars(sender: UIButton?) {
         let otherChars = sender! as UIButton
-        otherChars.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-        otherChars.setTitleColor(.darkGray, for: .normal)
+        unhighlightButton(sender: otherChars, colour: 0.9)
         let charsDict: [String: String] = [
             "1": "[",
             "[": "1",
@@ -420,8 +491,7 @@ class KeyboardViewController: UIInputViewController {
     
     @objc func toggleBengaliNums(sender: UIButton?) {
         let benNums = sender!
-        benNums.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-        benNums.setTitleColor(.darkGray, for: .normal)
+        unhighlightButton(sender: benNums, colour: 0.9)
         let benDict: [String: String] = [
             "1": "১",
             "১": "1",
@@ -491,8 +561,11 @@ class KeyboardViewController: UIInputViewController {
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
+        
+        
         var textColor: UIColor
         let proxy = self.textDocumentProxy
+        kbAppearance = proxy.keyboardAppearance!;
         if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
             textColor = UIColor.white
         } else {
