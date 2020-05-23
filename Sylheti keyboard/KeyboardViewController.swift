@@ -268,7 +268,6 @@ class KeyboardViewController: UIInputViewController {
         let longPresser = UILongPressGestureRecognizer.init(target: self, action: #selector(handleBackspaceLongPress(longPress:)))
         longPresser.minimumPressDuration = 0.5
         longPresser.numberOfTouchesRequired = 1
-        longPresser.allowableMovement = 5
         deleteButton.addGestureRecognizer(longPresser)
         return deleteButton
     }
@@ -279,8 +278,8 @@ class KeyboardViewController: UIInputViewController {
             self.textDocumentProxy.deleteBackward()
           case .ended:
             let button = longPress.view! as! UIButton
-            button.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-            button.setTitleColor(.black, for: .normal)
+            unhighlightButton(sender: button, colour: 0.9)
+            return;
           default:
             self.textDocumentProxy.deleteBackward()
         }
