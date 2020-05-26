@@ -29,7 +29,7 @@
 			<key>PrefersRightToLeft</key>
 			<false/>
 			<key>PrimaryLanguage</key>
-			<string>Sylheti</string>
+			<string>syl</string>
 			<key>RequestsOpenAccess</key>
 			<true/>
 		</dict>

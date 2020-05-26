@@ -59,7 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		553E03D22459F1920092F8CF /* Sylheti app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sylheti app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		553E03D22459F1920092F8CF /* Syloti keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Syloti keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		553E03D52459F1920092F8CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		553E03D72459F1920092F8CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		553E03D92459F1920092F8CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 		553E03D32459F1920092F8CF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				553E03D22459F1920092F8CF /* Sylheti app.app */,
+				553E03D22459F1920092F8CF /* Syloti keyboard.app */,
 				553E03E82459F1970092F8CF /* Sylheti appTests.xctest */,
 				553E03F32459F1970092F8CF /* Sylheti appUITests.xctest */,
 				553E04092459F1E40092F8CF /* Sylheti keyboard.appex */,
@@ -192,7 +192,7 @@
 			);
 			name = "Sylheti app";
 			productName = "Sylheti app";
-			productReference = 553E03D22459F1920092F8CF /* Sylheti app.app */;
+			productReference = 553E03D22459F1920092F8CF /* Syloti keyboard.app */;
 			productType = "com.apple.product-type.application";
 		};
 		553E03E72459F1970092F8CF /* Sylheti appTests */ = {
@@ -534,7 +534,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ana.Sylheti-app";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Syloti keyboard";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -556,7 +556,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ana.Sylheti-app";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Syloti keyboard";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
