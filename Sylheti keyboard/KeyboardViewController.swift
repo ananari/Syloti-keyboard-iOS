@@ -94,9 +94,12 @@ class KeyboardViewController: UIInputViewController {
 
     
     func addLetters() {
-        let topButtonTitles = ["ꠂ", "ꠣ", "ꠛ", "ꠢ", "ꠉ", "ꠖ", "ꠎ", "ꠒ", "ꠐ", "ꠠ"]
-        let middleButtonTitles = ["ꠧ", "ꠦ", "\u{A806}", "ꠤ", "ꠥ", "ꠙ", "ꠞ", "ꠇ", "ꠔ", "ꠌ", "ꠐ"]
-        let bottomButtonTitles = ["ꠋ", "ꠝ", "ꠘ", "ꠟ", "ꠡ"]
+        allButtons.removeAll()
+        allTextButtons.removeAll()
+        
+        let topButtonTitles = ["ꠂ", "ꠧ", "ꠦ", "ꠣ", "ꠛ", "ꠉ", "ꠖ", "ꠎ", "ꠒ"]
+        let middleButtonTitles = ["ꠤ", "ꠥ", "\u{A806}", "ꠞ", "ꠙ", "ꠇ", "ꠔ", "ꠌ", "ꠐ"]
+        let bottomButtonTitles = ["ꠋ", "ꠝ", "ꠘ", "ꠟ", "ꠡ", "ꠢ"]
         
         let shiftButton = createButton(title: "⇧", colour: 0.9, type: .custom, keyDown: false, isText: false)
         shiftButton.addTarget(self, action:#selector(toggleCaps(sender:)), for: .touchUpInside)
@@ -113,9 +116,9 @@ class KeyboardViewController: UIInputViewController {
         let numButton = createButton(title: "123", colour: 0.9, type: .custom, bigTitle: false, isText: false)
         numButton.addTarget(self, action:#selector(toggleNum), for: .touchUpInside)
         
-        let topRow = addKeys(titles: topButtonTitles)
-        let middleRow = addKeys(titles: middleButtonTitles)
-        let bottomKeys = addKeys(titles: bottomButtonTitles)
+        let topRow = addKeys(titles: topButtonTitles, isText: true)
+        let middleRow = addKeys(titles: middleButtonTitles, isText: true)
+        let bottomKeys = addKeys(titles: bottomButtonTitles, isText: true)
         let bottomRow = UIStackView(arrangedSubviews: [shiftButton, bottomKeys, deleteButton])
         bottomRow.distribution = .fillProportionally
         bottomRow.spacing = 5
@@ -157,8 +160,10 @@ class KeyboardViewController: UIInputViewController {
         
         if !isReturn {
             allButtons.append(button);
+            print("buttons at \(allButtons.count)");
             if isText {
                 allTextButtons.append(button);
+                print("textButtons at \(allTextButtons.count)");
                 button.tag = 1
             }
             else {
@@ -194,6 +199,9 @@ class KeyboardViewController: UIInputViewController {
     
     func addNumbers() {
         
+        allButtons.removeAll()
+        allTextButtons.removeAll()
+        
         for view in mainStackView.arrangedSubviews {
             view.removeFromSuperview()
         }
@@ -220,9 +228,9 @@ class KeyboardViewController: UIInputViewController {
         let abcButton = createButton(title: "ꠇ", colour: 0.9, type: .custom, bigTitle: false, isText: false)
         abcButton.addTarget(self, action:#selector(toggleNum), for: .touchUpInside)
         
-        let topRow = addKeys(titles: topButtonTitles)
-        let middleRow = addKeys(titles: middleButtonTitles)
-        let bottomKeys = addKeys(titles: bottomButtonTitles)
+        let topRow = addKeys(titles: topButtonTitles, isText: false)
+        let middleRow = addKeys(titles: middleButtonTitles, isText: false)
+        let bottomKeys = addKeys(titles: bottomButtonTitles, isText: false)
         let bottomRow = UIStackView(arrangedSubviews: [otherCharsButton, bengaliNumsButton, bottomKeys, deleteButton])
         bottomRow.distribution = .fillProportionally
         bottomRow.spacing = 5
@@ -236,7 +244,7 @@ class KeyboardViewController: UIInputViewController {
         handleMainStackView(stacks: [topRow, middleRow, bottomRow, functionRow])
     }
     
-    func addKeys(titles: [String]) -> UIStackView {
+    func addKeys(titles: [String], isText: Bool) -> UIStackView {
         
         let rowStackView = UIStackView.init()
         rowStackView.spacing = 5
@@ -245,7 +253,7 @@ class KeyboardViewController: UIInputViewController {
         rowStackView.distribution = .fillEqually
         
         for title in titles {
-            let button = createButton(title: title)
+            let button = createButton(title: title, isText: isText)
             button.addTarget(self, action:#selector(keyPressed(_:)), for: .touchUpInside)
             rowStackView.addArrangedSubview(button)
         }
@@ -329,7 +337,7 @@ class KeyboardViewController: UIInputViewController {
         let button = sender! as UIButton
         let title = button.title(for: .normal)
         if isCaps {
-            toggleCaps(sender: allButtons.first!)
+            toggleCaps(sender: allButtons.first(where: {$0.title(for: .normal) == "⇧"}))
         }
         unhighlightButton(sender: sender!)
         (textDocumentProxy as UIKeyInput).insertText(title!)
@@ -343,10 +351,16 @@ class KeyboardViewController: UIInputViewController {
     
     @objc func handleSpace(sender: UIButton) {
         unhighlightButton(sender: sender)
+        if isCaps {
+            toggleCaps(sender: allButtons.first(where: {$0.title(for: .normal) == "⇧"}))
+        }
         (textDocumentProxy as UIKeyInput).insertText(" ")
     }
     
     @objc func handleReturn() {
+        if isCaps {
+            toggleCaps(sender: allButtons.first(where: {$0.title(for: .normal) == "⇧"}))
+        }
         (textDocumentProxy as UIKeyInput).insertText("\n")
     }
     
@@ -384,11 +398,14 @@ class KeyboardViewController: UIInputViewController {
             "ꠦ": "ꠄ",
             "ꠄ": "ꠦ",
             "ꠂ": "ꠅꠂ",
-            "ꠅꠂ": "ꠂ"
+            "ꠅꠂ": "ꠂ",
+            "ꠞ": "ꠠ",
+            "ꠠ": "ꠞ"
         ]
         
         isCaps = !isCaps
         if isCaps {
+            print("if isCaps")
             if textDocumentProxy.keyboardAppearance == .dark {
                 shift.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
                 shift.setTitleColor(.black, for: .normal)
@@ -399,11 +416,14 @@ class KeyboardViewController: UIInputViewController {
             }
         }
         else {
+            print("if isCapsn't")
             if textDocumentProxy.keyboardAppearance == .dark {
+                print("if dark")
                 shift.backgroundColor = specialDarkKeyColour
                 shift.setTitleColor(.white, for: .normal)
             }
             else {
+                print("if darkn't")
                 unhighlightButton(sender: shift, colour: 0.9)
             }
         }
@@ -468,6 +488,9 @@ class KeyboardViewController: UIInputViewController {
             "•": "\""
         ]
         if !showBengaliNums {
+            if let benNums = allButtons.first(where: {$0.title(for: .normal) == "১২৩"}) {
+                toggleDisabled(button: benNums)
+            }
             showChars = !showChars
             if showChars {
                 setTitleNoAnim(button: otherChars, title: "123")
@@ -515,10 +538,15 @@ class KeyboardViewController: UIInputViewController {
             "?": "꠪",
             "꠪": "?",
             "!": "꠫",
-            "꠫": "!"
+            "꠫": "!",
+            "'": "⁕",
+            "⁕": "'"
         ]
         if !showLetters && !showChars {
             showBengaliNums = !showBengaliNums
+            if let otherChars = allButtons.first(where: {$0.title(for: .normal) == "#+="}) {
+                toggleDisabled(button: otherChars)
+            }
             if showBengaliNums {
                 setTitleNoAnim(button: benNums, title: "123")
             }
@@ -531,6 +559,27 @@ class KeyboardViewController: UIInputViewController {
                     setTitleNoAnim(button: button, title: benDict[title]!)
 
                 }
+            }
+        }
+    }
+    
+    @objc func toggleDisabled(button: UIButton) {
+        button.isEnabled = !button.isEnabled;
+        if button.isEnabled {
+            if kbAppearance == .dark {
+                button.backgroundColor = UIColor(white: 0.3, alpha: 1.0)
+            }
+            
+            else {
+                button.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
+            }
+        }
+        else {
+            if kbAppearance == .dark {
+                button.backgroundColor = UIColor(white: 0.15, alpha: 1.0)
+            }
+            else {
+                button.backgroundColor = UIColor(white: 0.75, alpha: 1.0)
             }
         }
     }
