@@ -526,7 +526,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
 				INFOPLIST_FILE = "Sylheti app/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -549,7 +549,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
 				INFOPLIST_FILE = "Sylheti app/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -653,7 +653,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
 				INFOPLIST_FILE = "Sylheti keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -674,7 +674,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
 				INFOPLIST_FILE = "Sylheti keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

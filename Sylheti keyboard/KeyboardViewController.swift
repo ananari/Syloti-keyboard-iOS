@@ -160,10 +160,8 @@ class KeyboardViewController: UIInputViewController {
         
         if !isReturn {
             allButtons.append(button);
-            print("buttons at \(allButtons.count)");
             if isText {
                 allTextButtons.append(button);
-                print("textButtons at \(allTextButtons.count)");
                 button.tag = 1
             }
             else {
@@ -405,7 +403,6 @@ class KeyboardViewController: UIInputViewController {
         
         isCaps = !isCaps
         if isCaps {
-            print("if isCaps")
             if textDocumentProxy.keyboardAppearance == .dark {
                 shift.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
                 shift.setTitleColor(.black, for: .normal)
@@ -416,14 +413,11 @@ class KeyboardViewController: UIInputViewController {
             }
         }
         else {
-            print("if isCapsn't")
             if textDocumentProxy.keyboardAppearance == .dark {
-                print("if dark")
                 shift.backgroundColor = specialDarkKeyColour
                 shift.setTitleColor(.white, for: .normal)
             }
             else {
-                print("if darkn't")
                 unhighlightButton(sender: shift, colour: 0.9)
             }
         }
