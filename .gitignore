@@ -1,0 +1,13 @@
+//
+//  .gitignore
+//  Sylheti app
+//
+//  Created by Anais Ahmed on 11/2/26.
+//  Copyright © 2026 Anaïs. All rights reserved.
+//
+
+.DS_Store
+Sylheti app.xcodeproj/project.xcworkspace/xcuserdata/
+Sylheti app.xcodeproj/xcuserdata/anaisahmed.xcuserdatad/
+Sylheti app/.DS_Store
+Sylheti app/Assets.xcassets/.DS_Store

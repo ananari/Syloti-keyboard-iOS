@@ -10,9 +10,7 @@
 		553E03D62459F1920092F8CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03D52459F1920092F8CF /* AppDelegate.swift */; };
 		553E03D82459F1920092F8CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03D72459F1920092F8CF /* SceneDelegate.swift */; };
 		553E03DA2459F1920092F8CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03D92459F1920092F8CF /* ViewController.swift */; };
-		553E03DD2459F1920092F8CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 553E03DB2459F1920092F8CF /* Main.storyboard */; };
 		553E03DF2459F1970092F8CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553E03DE2459F1970092F8CF /* Assets.xcassets */; };
-		553E03E22459F1970092F8CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 553E03E02459F1970092F8CF /* LaunchScreen.storyboard */; };
 		553E03ED2459F1970092F8CF /* Sylheti_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03EC2459F1970092F8CF /* Sylheti_appTests.swift */; };
 		553E03F82459F1970092F8CF /* Sylheti_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E03F72459F1970092F8CF /* Sylheti_appUITests.swift */; };
 		553E040C2459F1E40092F8CF /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E040B2459F1E40092F8CF /* KeyboardViewController.swift */; };
@@ -59,13 +57,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		41951EA62F3D8E4B00A16057 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = .gitignore; sourceTree = "<group>"; };
 		553E03D22459F1920092F8CF /* Syloti keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Syloti keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		553E03D52459F1920092F8CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		553E03D72459F1920092F8CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		553E03D92459F1920092F8CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		553E03DC2459F1920092F8CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		553E03DE2459F1970092F8CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		553E03E12459F1970092F8CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		553E03E32459F1970092F8CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		553E03E82459F1970092F8CF /* Sylheti appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sylheti appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		553E03EC2459F1970092F8CF /* Sylheti_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sylheti_appTests.swift; sourceTree = "<group>"; };
@@ -113,6 +110,7 @@
 		553E03C92459F1920092F8CF = {
 			isa = PBXGroup;
 			children = (
+				41951EA62F3D8E4B00A16057 /* .gitignore */,
 				553E03D42459F1920092F8CF /* Sylheti app */,
 				553E03EB2459F1970092F8CF /* Sylheti appTests */,
 				553E03F62459F1970092F8CF /* Sylheti appUITests */,
@@ -138,9 +136,7 @@
 				553E03D52459F1920092F8CF /* AppDelegate.swift */,
 				553E03D72459F1920092F8CF /* SceneDelegate.swift */,
 				553E03D92459F1920092F8CF /* ViewController.swift */,
-				553E03DB2459F1920092F8CF /* Main.storyboard */,
 				553E03DE2459F1970092F8CF /* Assets.xcassets */,
-				553E03E02459F1970092F8CF /* LaunchScreen.storyboard */,
 				553E03E32459F1970092F8CF /* Info.plist */,
 			);
 			path = "Sylheti app";
@@ -300,9 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553E03E22459F1970092F8CF /* LaunchScreen.storyboard in Resources */,
 				553E03DF2459F1970092F8CF /* Assets.xcassets in Resources */,
-				553E03DD2459F1920092F8CF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,25 +379,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		553E03DB2459F1920092F8CF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				553E03DC2459F1920092F8CF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		553E03E02459F1970092F8CF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				553E03E12459F1970092F8CF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		553E03FA2459F1970092F8CF /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -455,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -509,7 +484,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -529,7 +504,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
 				INFOPLIST_FILE = "Sylheti app/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -552,7 +527,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
 				INFOPLIST_FILE = "Sylheti app/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -573,7 +548,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
 				INFOPLIST_FILE = "Sylheti appTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -595,7 +570,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
 				INFOPLIST_FILE = "Sylheti appTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -656,7 +631,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
 				INFOPLIST_FILE = "Sylheti keyboard/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -677,7 +652,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SCGAN6HZRF;
 				INFOPLIST_FILE = "Sylheti keyboard/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
